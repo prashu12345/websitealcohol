@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadway Incident Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Roadway Incident Map</h1>
+    <div id="map"></div>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([36.1627, -86.7816], 7); // Centered on Tennessee
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Load incident data from CSV file
+        const incidentDataUrl = "Filtered_Map_Data.csv"; // Ensure this file is hosted in the same directory
+
+        // Function to parse CSV and plot points
+        async function loadAndPlotData() {
+            const response = await fetch(incidentDataUrl);
+            const csvText = await response.text();
+
+            // Parse CSV
+            const rows = csvText.split('\n').slice(1); // Skip header row
+            rows.forEach(row => {
+                const [incident_number, roadway_name, county, latitude, longitude] = row.split(',');
+
+                if (latitude && longitude) {
+                    L.marker([parseFloat(latitude), parseFloat(longitude)]).addTo(map)
+                        .bindPopup(`
+                            <b>Incident Number:</b> ${incident_number}<br>
+                            <b>Roadway:</b> ${roadway_name}<br>
+                            <b>County:</b> ${county}
+                        `);
+                }
+            });
+        }
+
+        // Load and plot the data
+        loadAndPlotData();
+    </script>
+</body>
+</html>
