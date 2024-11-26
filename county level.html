@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>County Level Analysis - Spatial Analysis</title>
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .section {
+            margin: 40px auto;
+            padding: 20px;
+            width: 100%;
+            max-width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+        #tableauViz {
+            width: 100%;
+            height: 800px;
+            margin: 0 auto;
+        }
+        .analysis {
+            padding: 15px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: gray;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>County Level Analysis - Spatial Analysis</h1>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="alcohol_impaired.html">Temporal Analysis</a>
+        <a href="spatial analysis.html">Spatial Analysis</a>
+        <a href="other analysis.html">Other Analysis</a>
+    </nav>
+    
+    <!-- Sub Navigation Menu -->
+    <nav>
+        <a href="county level.html">County level Analysis</a>
+        <a href="Roadway level.html">Roadway Level Analysis</a>
+    </nav>
+
+    <!-- Section: Top 10 Counties and Word Cloud -->
+    <div id="county-level-map-county" class="section">
+        <h2>TOTAL CRASHES BY HOUR AND DAY OF THE WEEK</h2>
+        <div id="tableauViz5"></div> <!-- Unique Container for Third Tableau Visualization -->
+        <script>
+            function initViz5() {
+                var containerDiv = document.getElementById("tableauViz5");
+                var vizUrl = "https://public.tableau.com/views/top_17326025318980/Sheet5";
+
+                var options = {
+                    hideTabs: true,
+                    hideToolbar: true,
+                    width: "100%",
+                    height: "600px"
+                };
+
+                new tableau.Viz(containerDiv, vizUrl, options);
+            }
+
+            // Load all visualizations when the page is fully loaded
+
+        </script>
+        <div class="analysis">
+            <p>This graph shows the distribution of crashes by date of the month, providing detailed insights into daily trends.</p>
+        </div>
+    </div>
+
+    <!-- Section: County Level Map -->
+    <div id="county-level-map" class="section">
+        <h2>County Level Map</h2>
+        <div id="tableauViz"></div> <!-- Container for Tableau Visualization -->
+        <script>
+            function initViz() {
+                var containerDiv = document.getElementById("tableauViz");
+                var vizUrl = "https://public.tableau.com/views/countymap_17303536534070/Sheet1";
+
+                var options = {
+                    hideTabs: true, // Hides the tabs at the bottom
+                    hideToolbar: true, // Hides the toolbar at the top
+                    width: "100%",
+                    height: "800px"
+                };
+
+                new tableau.Viz(containerDiv, vizUrl, options); // Load Tableau visualization
+            }
+
+            // Load the visualization when the page is fully loaded
+            window.onload = function () {
+                initViz5();
+                initViz();
+                 // Initialize the third visualization
+            };
+        </script>
+        <div class="analysis">
+            <p>
+                The **County Level Map** provides a detailed geographical distribution of alcohol-impaired crashes. The size and color of the markers indicate crash frequency, with Davidson, Shelby, and Hamilton counties standing out as the most affected areas. This visualization assists in identifying high-risk regions for implementing targeted safety measures.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2024 Alcohol-impaired Report. All rights reserved.
+    </div>
+</body>
+</html>
