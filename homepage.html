@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTIER-Traffic Safety</title>
+    <style>
+        /* Body and Background */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #b3acac;
+            background-image: url('figures/red.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(179, 167, 167, 0.3);
+            z-index: -1;
+        }
+
+        /* Header */
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #1a466d;
+            height: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo1 {
+    height: 200px;
+    width: auto;
+    margin-top:50px; 
+    margin-left: 0px;
+    padding: 0px; 
+    margin-right:300px;
+} 
+.logo2 {
+    height: 120px;
+    width: auto; 
+} 
+        .header-title {
+            flex: 1;
+            text-align: center;
+            font-size: 3rem;
+            color: white;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #1a466d;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 36px;
+            cursor: pointer;
+        }
+
+        /* Content */
+        .content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .section-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-box h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            background-color: #1a466d;
+        }
+
+        .section-box p, .section-box ul {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .page-content {
+            display: none;
+        }
+
+        #home-content {
+            display: block; /* Default visible content */
+        }
+
+        /* Cards Section */
+       /* Cards Section */
+       .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .card {
+            flex: 1;
+            min-width: calc(50% - 20px);
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            margin: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+       
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+    
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .logo1, .logo2 {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <img src="figures/Img_THSO_BADGE.jpg" alt="Logo 1" class="logo1">
+        <h1 class="header-title">CTIER-Traffic Safety</h1>
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+        <img src="figures/C-TIER logo.PNG" alt="Logo 2" class="logo2">
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
+        <a href="#" onclick="showContent('home')">Home</a>
+        <a href="#" onclick="showContent('dashboards')">Dashboards</a>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="content">
+        <!-- Home Content -->
+        <div id="home-content" class="page-content">
+            <div class="section-box">
+                <h2>Our Mission</h2>
+                <p>The Center for Transportation Innovation, Education, and Research (C-TIER) mission is to address critical issues affecting the planning, design, operation, safety, and equity of the nation's multimodal transportation system in order to increase our nation's economic competitiveness and reduce economic, racial, and gender inequality.</p>
+            </div>
+    
+            <div class="section-box">
+                <h2>Why It Matters</h2>
+                <p>Efficient and safe passenger and freight movement is inextricably linked to the economic vitality of a local area, state, region, and beyond, as well as to the life chances of its citizens.</p>
+            </div>
+    
+            <div class="section-box">
+                <h2>Our Focus Areas</h2>
+                <ul>
+                    <li>Supporting maintenance and improvement of mobility in the face of growing traffic and shrinking resources.</li>
+                    <li>Developing methodologies that optimize the performance of the U.S. transportation system with user needs and safety as the major objectives.</li>
+                    <li>Increasing efficiency while maintaining security and resilience.</li>
+                    <li>Improving air quality to advance personal health and environmental justice.</li>
+                    <li>Removing barriers for transportation-disadvantaged individuals participating fully in society.</li>
+                </ul>
+            </div>
+    
+            <div class="section-box">
+                <h2>Our Commitment</h2>
+                <p>All the C-TIER partners are motivated to embrace innovative, interdisciplinary research projects, train current and future transportation leaders and workforce, and engage with the industry to enhance collaborations between agencies.</p>
+            </div>
+        </div>
+
+        <!-- Dashboards Content -->
+        <div id="dashboards-content" class="page-content">
+            <div class="section-box">
+                <h2>Dashboards</h2>
+                <p>Here you can find data visualizations and dashboards for traffic safety...</p>
+            </div>
+            <div class="cards-container">
+                <a href="alcohol_impaired.html" class="card">
+                    <img src="figures/drunk driver.jpg" alt="Alcohol Impaired" class="card-bg">
+                    <h2>Alcohol Impaired Dashboard</h2>
+                </a>
+                <a href="distracted-driving.html" class="card">
+                    <img src="figures/distracted.jpg" alt="Distracted Driving" class="card-bg">
+                    <h2>Distracted Driving Dashboard</h2>
+                </a>
+                
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+
+        function showContent(page) {
+            // Hide all content
+            const contents = document.querySelectorAll(".page-content");
+            contents.forEach(content => content.style.display = "none");
+
+            // Show the selected page content
+            document.getElementById(`${page}-content`).style.display = "block";
+
+            // Close the sidebar
+            toggleSidebar();
+        }
+    </script>
+</body>
+</html>
