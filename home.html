@@ -3,186 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Analysis - Alcohol Impaired Report and Distracted Impaired Report</title>
+    <title>Login Page with Video Background</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
+      /* Base Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
 
-        /* Header styling */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: white;
-            padding: 15px 20px;
-        }
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+   
+}
 
-        /* Navigation bar styling */
-        .navbar {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+/* Login Wrapper */
+.login-wrapper {
+    width: 90%; /* Set initial width */
+    max-width: 900px; /* Limit the maximum width */
+    max-height:600px;
+    height:90%;
+    background: rgba(12, 26, 53, 0.9); /* Slightly opaque background for visibility */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    z-index: 1;
+}
 
-        .navbar li {
-            margin: 0 10px;
-        }
+/* Logo Alignment */
+.logo-container {
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Vertically aligns items */
+    justify-content: space-between; /* Places logos on the left and right */
+    gap: 20px; /* Adds spacing between the elements */
+    width: 100%; /* Ensures it spans the width of the parent */
+    margin-top: 30PX;
+}
 
-        /* Styling for About Us (distinct style) */
-        .navbar li:first-child a {
-            background-color: #555; /* Different background color */
-            border-radius: 5px; /* Rounded edges */
-            padding: 8px 12px;
-            text-decoration: none;
-            font-size: 1.5em;
-            color: white;
-        }
+.logo-container img {
+    width: 150px; /* Adjust the size of the logos */
+   
+}
+.logo-container .right {
+    max-height: 200px;
+    max-width:200px;
+ }
 
-        .navbar li:first-child a:hover {
-            background-color: #777;
-        }
-
-        .navbar li a {
-            text-decoration: none;
-            color: white;
-            padding: 8px 12px;
-            font-size: 1.5em;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .navbar li a:hover {
-            background-color: #555;
-        }
+.logo-container h1 {
+    font-size: 2.8em; /* Adjust heading size */
+    color: #e7dcdc;
+    margin: 0; /* Remove default margin */
+    text-align: center;
+    flex: 1; /* Pushes logos to the sides */
+}
 
 
-        .content {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-        }
+/* Input Group */
+.input-group {
+    position: relative;
+    margin: 20px 0;
+    width: 100%; /* Make inputs full width */
+}
+.input-group input {
+    width: 90%; /* Fill the available space */
+    padding: 10px 40px 10px 40px; /* Add padding for icon space */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 35px; /* Better font size for readability */
+}
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Adjusted for consistent padding */
+    transform: translateY(-50%);
+    color: #007bff;
+}
 
-        .section-box {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            padding: 20px 25px;
-            border-left: 5px solid #007bff;
-        }
+/* Buttons */
+.btn-primary, .btn-secondary {
+    width: 100%; /* Full width buttons */
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 35px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-primary {
+    background: #007bff;
+    color: #fff;
+}
+.btn-primary:hover {
+    background: #0056b3;
+}
+.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background: #495057;
+}
 
-        .section-box:nth-child(even) {
-            border-left: 5px solid #28a745;
-        }
+/* Footer */
+.login-footer {
+    margin-top: 20px;
+    font-size: 35px;
+    color: #888;
+}
+</style>
 
-        .section-box h2 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .section-box p,
-        .section-box ul {
-            color: #555;
-            line-height: 1.6;
-            font-size: 1.1em;
-        }
-
-        .section-box ul {
-            padding-left: 20px;
-        }
-
-        .section-box ul li {
-            margin-bottom: 10px;
-        }
-
-        /* Footer styling */
-        .footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #333;
-            color: white;
-            font-size: 0.9em;
-        }
-    </style>
 </head>
 <body>
+    <!-- Video Background -->
+    <video class="video-background" autoplay loop muted>
+        <source src="figures/AdobeStock_833665239_Video_4K_Preview.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-
-    <h1><center>Analysis - Alcohol Impaired Report and Distracted Impaired Report</center></h1>
-    <!-- Header Section -->
-    <div class="header">
-       
-        <ul class="navbar">
-            <li><a href="home.html">About Us</a></li> <!-- "About Us" on the very left -->
-            <li><a href="alcohol_impaired.html">Alcohol Impaired Report</a></li>
-        </ul>
-        
-    </div>
-
-
-
-    <!-- Main Content -->
-    <div class="content">
-        <div class="section-box">
-            <h2>Our Mission</h2>
-            <p>
-                The Center for Transportation Innovation, Education, and Research (C-TIER) mission is to address critical
-                issues affecting the planning, design, operation, safety, and equity of the nation's multimodal
-                transportation system in order to increase our nation's economic competitiveness and reduce economic,
-                racial, and gender inequality.
-            </p>
-        </div>
-
-        <div class="section-box">
-            <h2>Why It Matters</h2>
-            <p>
-                Efficient and safe passenger and freight movement is inextricably linked to the economic vitality of a
-                local area, state, region, and beyond, as well as to the life chances of its citizens.
-            </p>
-        </div>
-
-        <div class="section-box">
-            <h2>Our Focus Areas</h2>
-            <p>
-                In consultation with stakeholders, as well as USDOT's strategic priorities, as expressed by the FAST Act's
-                Improving Mobility of People and Goods priority and the known exclusive topic areas established by the
-                Secretary of Transportation, we will focus on:
-            </p>
-            <ul>
-                <li>Supporting maintenance and improvement of mobility in the face of growing traffic and shrinking resources.</li>
-                <li>Developing methodologies that optimize the performance of the U.S. transportation system with user needs and safety as the major objectives.</li>
-                <li>Increasing efficiency while maintaining security and resilience.</li>
-                <li>Improving air quality to advance personal health and environmental justice.</li>
-                <li>Removing barriers for transportation-disadvantaged individuals participating fully in society.</li>
-            </ul>
-        </div>
-
-        <div class="section-box">
-            <h2>Our Commitment</h2>
-            <p>
-                All the C-TIER partners are motivated to embrace innovative, interdisciplinary research projects, train
-                current and future transportation leaders and workforce, and engage with the industry to enhance
-                collaborations between agencies.
-            </p>
-            <p>
-                Our center will have a significant educational impact by enhancing interdisciplinary learning opportunities
-                and engaging underrepresented groups through integrated education and outreach components.
-            </p>
+    <div class="login-wrapper"><!-- Login Card -->
+    <div class="login-header">
+        <div class="logo-container">
+            <div class="logo-container">
+                <img src="figures/Img_THSO_BADGE.jpg" alt="Logo 1" class="left">
+                <h1>CTIER-TRAFFIC SAFETY</h1>
+                <img src="figures/C-TIER logo.PNG" alt="Logo 2" class="right">
+            </div>
+            
         </div>
     </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        © 2024 C-TIER. All rights reserved.
+    
+   
+        <form id="loginForm" onsubmit="return validateLogin()">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn-primary">Sign In</button>
+        </form>
+        <p class="login-footer">
+            <small>Unauthorized access is prohibited. Usage will be monitored.</small>
+        </p>
     </div>
+    <script>
+        // Hardcoded credentials
+        const VALID_USERNAME = "admin";
+        const VALID_PASSWORD = "password123";
 
+        function validateLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check credentials
+            if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+                alert("Login successful!");
+                window.location.href = "homepage.html";
+                return false; // Allow form submission
+            } else {
+                alert("Invalid username or password.");
+                return false; // Prevent form submission
+            }
+        }
+    </script>
 </body>
 </html>
